@@ -11,6 +11,9 @@
 		D70F4A19264A972400C585E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F4A18264A972400C585E0 /* ContentView.swift */; };
 		D70F4A1B264A972700C585E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70F4A1A264A972700C585E0 /* Assets.xcassets */; };
 		D70F4A1E264A972700C585E0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70F4A1D264A972700C585E0 /* Preview Assets.xcassets */; };
+		D70F4A26264AD1BB00C585E0 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F4A25264AD1BB00C585E0 /* Examples.swift */; };
+		D77C98C4264C120200652A4F /* astronauts.json in Resources */ = {isa = PBXBuildFile; fileRef = D77C98C2264C120200652A4F /* astronauts.json */; };
+		D77C98C5264C120200652A4F /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = D77C98C3264C120200652A4F /* missions.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		D70F4A1A264A972700C585E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D70F4A1D264A972700C585E0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D70F4A1F264A972700C585E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D70F4A25264AD1BB00C585E0 /* Examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
+		D77C98C2264C120200652A4F /* astronauts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = astronauts.json; path = "../../HackingWithSwift-main/SwiftUI/project8-files/astronauts.json"; sourceTree = "<group>"; };
+		D77C98C3264C120200652A4F /* missions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = missions.json; path = "../../HackingWithSwift-main/SwiftUI/project8-files/missions.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +60,11 @@
 			children = (
 				D70F4A16264A972400C585E0 /* MoonshotApp.swift */,
 				D70F4A18264A972400C585E0 /* ContentView.swift */,
+				D70F4A25264AD1BB00C585E0 /* Examples.swift */,
 				D70F4A1A264A972700C585E0 /* Assets.xcassets */,
 				D70F4A1F264A972700C585E0 /* Info.plist */,
+				D77C98C2264C120200652A4F /* astronauts.json */,
+				D77C98C3264C120200652A4F /* missions.json */,
 				D70F4A1C264A972700C585E0 /* Preview Content */,
 			);
 			path = Moonshot;
@@ -126,7 +135,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77C98C4264C120200652A4F /* astronauts.json in Resources */,
 				D70F4A1E264A972700C585E0 /* Preview Assets.xcassets in Resources */,
+				D77C98C5264C120200652A4F /* missions.json in Resources */,
 				D70F4A1B264A972700C585E0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70F4A19264A972400C585E0 /* ContentView.swift in Sources */,
+				D70F4A26264AD1BB00C585E0 /* Examples.swift in Sources */,
 				D70F4A17264A972400C585E0 /* MoonshotApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
