@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showingCrew = false
-    let astronauts: [Astronaut]
-    let missions: [Mission]
+    let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
+    let missions: [Mission] = Bundle.main.decode("missions.json")
     
     var body: some View {
         NavigationView {
@@ -25,7 +25,7 @@ struct ContentView: View {
                         Text(mission.displayName)
                             .font(.headline)
                         if showingCrew {
-                            Text("mission.crewString")
+                            Text(getCrewNames(mission: mission))
                         } else {
                             Text(mission.formattedLaunchDate)
                         }
@@ -34,28 +34,23 @@ struct ContentView: View {
             }
             .navigationTitle("Moonshot")
             .toolbar {
-                Button(showingCrew == true ? "Show launch date" : "Show crew") {
+                Button(showingCrew == true ? "Launch date" : "Crew names") {
                     self.showingCrew.toggle()
                 }
             }
         }
     }
     
-    init() {
-        self.astronauts = Bundle.main.decode("astronauts.json")
-        var missions: [Mission] = Bundle.main.decode("missions.json")
+    func getCrewNames(mission: Mission) -> String {
+        var matchs = Array<String>()
         
-        for var mission in missions {
-            var matchs = Array<String>()
-            for member in mission.crew {
-                if let match = astronauts.first(where: { $0.id == member.name }) {
-                    matchs.append(match.name)
-                }
+        for member in mission.crew {
+            if let match = astronauts.first(where: { $0.id == member.name }) {
+                matchs.append(match.name)
             }
-            mission.crewString = matchs.joined(separator: ", ")
         }
         
-        self.missions = missions
+        return matchs.joined(separator: ", ")
     }
 }
 
