@@ -12,17 +12,19 @@ struct AstronautView: View {
     let listOfMissions: String
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { geo in
             ScrollView(.vertical) {
-                VStack {
+                VStack(alignment: .center) {
                     Image(self.astronaut.id)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: geometry.size.width)
+                        .frame(width: geo.size.width)
                     Text(self.listOfMissions)
-                        .padding()
+                        .font(.custom("AvenirNext-Bold", size: 20))
+                        .padding([.top], 30)
                     Text(self.astronaut.description)
-                        .padding()
+                        .font(.custom("AvenirNext-Regular", size: 20))
+                        .padding([.top], 20)
                 }
             }
         }

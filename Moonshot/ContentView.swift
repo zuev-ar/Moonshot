@@ -23,11 +23,13 @@ struct ContentView: View {
                     
                     VStack(alignment: .leading) {
                         Text(mission.displayName)
-                            .font(.headline)
+                            .font(.custom("AvenirNext-Regular", size: 20))
                         if showingCrew {
                             Text(getCrewNames(mission: mission))
+                                .font(.custom("AvenirNext-Regular", size: 15))
                         } else {
                             Text(mission.formattedLaunchDate)
+                                .font(.custom("AvenirNext-Regular", size: 15))
                         }
                     }
                 }

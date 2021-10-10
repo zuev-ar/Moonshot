@@ -18,39 +18,63 @@ struct MissionView: View {
     let astronauts: [CrewMember]
     
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { fullView in
             ScrollView(.vertical) {
-                Image(self.mission.image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(minWidth: geometry.size.width * 0.7)
-                    .padding(.top)
-                
-                Text(self.mission.formattedLaunchDate)
-                
-                Text(self.mission.description)
-                    .padding()
-                
-                ForEach(self.astronauts, id: \.role) { crewMember in
-                    NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut, missions: self.missions)) {
-                        HStack {
-                            Image(crewMember.astronaut.id)
+                GeometryReader { geo in
+                    ZStack(alignment: .center) {
+                        if geo.frame(in: .global).minY <= 0 {
+                            Image(self.mission.image)
                                 .resizable()
-                                .frame(width: 83, height: 60)
-                                .clipShape(Circle())
-                                .overlay(Circle().stroke(Color.primary, lineWidth: 1))
-                            VStack(alignment: .leading) {
-                                Text(crewMember.astronaut.name)
-                                    .font(.headline)
-                                Text(crewMember.role)
-                                    .foregroundColor(.secondary)
-                            }
-                            
-                            Spacer()
+                                .scaledToFit()
+                                .frame(width: geo.size.width, height: geo.size.height - fullView.frame(in: .global).minY)
+                                .offset(y: geo.frame(in: .global).minY / 8)
+                        } else {
+                            Image(self.mission.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: geo.size.width, height: geo.size.height + (geo.frame(in: .global).minY - fullView.frame(in: .global).minY))
+                                .offset(y: 0)
                         }
-                        .padding()
                     }
                 }
+                .frame(height: 300)
+                
+                VStack {
+                    Text(self.mission.formattedLaunchDate)
+                        .font(.custom("AvenirNext-Regular", size: 30))
+                        .lineLimit(nil)
+                        .foregroundColor(.gray)
+                        .padding([.top], 20)
+                    
+                    Text(self.mission.description)
+                        .font(.custom("AvenirNext-Regular", size: 20))
+                        .lineLimit(nil)
+                        .padding([.top], 20)
+                    
+                    ForEach(self.astronauts, id: \.role) { crewMember in
+                        NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut, missions: self.missions)) {
+                            HStack {
+                                Image(crewMember.astronaut.id)
+                                    .resizable()
+                                    .frame(width: 83, height: 60)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.primary, lineWidth: 1))
+                                VStack(alignment: .leading) {
+                                    Text(crewMember.astronaut.name)
+                                        .font(.custom("AvenirNext-Regular", size: 20))
+                                    Text(crewMember.role)
+                                        .font(.custom("AvenirNext-Regular", size: 20))
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                Spacer()
+                            }
+                            .padding()
+                        }
+                    }
+                }
+                .frame(width: 350)
+                .padding()
                 
                 Spacer(minLength: 25)
             }
